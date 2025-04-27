@@ -10,7 +10,6 @@ import '../../../common/utils/tools.dart';
 import '../../../layout/themes/cus_font_size.dart';
 import '../../../models/cus_app_localizations.dart';
 import '../../../models/training_state.dart';
-import 'export/report_pdf_viewer.dart';
 
 class TrainingReports extends StatefulWidget {
   const TrainingReports({super.key});
@@ -170,74 +169,6 @@ class _TrainingReportsState extends State<TrainingReports> {
             ],
           ),
           title: Text(CusAL.of(context).trainingReports),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                var dateSelected = await showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: Text(CusAL.of(context).exportRangeNote),
-                      content: DropdownMenu<CusLabel>(
-                        width: 0.6.sw,
-                        initialSelection: exportDateList.first,
-                        onSelected: (CusLabel? value) {
-                          setState(() {
-                            exportDateValue = value!;
-                          });
-                        },
-                        dropdownMenuEntries: exportDateList
-                            .map<DropdownMenuEntry<CusLabel>>((CusLabel value) {
-                          return DropdownMenuEntry<CusLabel>(
-                            value: value,
-                            label: showCusLable(value),
-                          );
-                        }).toList(),
-                      ),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context, false);
-                          },
-                          child: Text(CusAL.of(context).cancelLabel),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context, true);
-                          },
-                          child: Text(CusAL.of(context).confirmLabel),
-                        ),
-                      ],
-                    );
-                  },
-                );
-                // 弹窗选择导出范围不为空，且不为false，则默认是选择的日期范围
-                if (dateSelected != null && dateSelected) {
-                  String tempStart, tempEnd;
-                  if (exportDateValue.value == "seven") {
-                    [tempStart, tempEnd] = getStartEndDateString(7);
-                  } else if (exportDateValue.value == "thirty") {
-                    [tempStart, tempEnd] = getStartEndDateString(30);
-                  } else {
-                    // 导出全部就近20年吧
-                    [tempStart, tempEnd] = getStartEndDateString(365 * 20);
-                  }
-
-                  if (!mounted) return;
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TrainedReportPdfViewer(
-                        startDate: tempStart,
-                        endDate: tempEnd,
-                      ),
-                    ),
-                  );
-                }
-              },
-              icon: const Icon(Icons.print),
-            ),
-          ],
         ),
         body: isLoading
             ? buildLoader(isLoading)

@@ -12,7 +12,6 @@ import '../../../common/utils/tool_widgets.dart';
 import '../../../common/utils/tools.dart';
 import '../../../layout/themes/cus_font_size.dart';
 import 'exercise_detail.dart';
-import 'exercise_json_import.dart';
 import 'exercise_modify.dart';
 import 'exercise_query_form.dart';
 
@@ -170,20 +169,6 @@ class _TrainingExerciseState extends State<TrainingExercise> {
       return;
     }
 
-    // 用户授权了访问内部存储权限，可以跳转到导入
-    if (!mounted) return;
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const ExerciseJsonImport(),
-      ),
-    ).then((value) {
-      setState(() {
-        exerciseItems.clear();
-        currentPage = 1;
-      });
-      _loadExerciseData();
-    });
   }
 
   @override

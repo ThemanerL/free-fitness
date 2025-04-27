@@ -34,11 +34,12 @@ class _TrainingState extends State<Training> {
     return Scaffold(
       // 避免搜索时弹出键盘，让底部的minibar位置移动到tab顶部导致溢出的问题
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(title: Text(CusAL.of(context).training)),
+      // appBar: AppBar(title: Text(CusAL.of(context).training)),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
+            // 运动报告
             child: CusCoverCard(
               targetPage: const TrainingReports(),
               title: CusAL.of(context).trainingReports,
@@ -47,6 +48,7 @@ class _TrainingState extends State<Training> {
             ),
           ),
           Expanded(
+            // 基础动作
             child: CusCoverCard(
               targetPage: const TrainingExercise(),
               title: CusAL.of(context).exerciseLabel,
@@ -55,6 +57,7 @@ class _TrainingState extends State<Training> {
             ),
           ),
           Expanded(
+            // 训练做组
             child: CusCoverCard(
               targetPage: const TrainingWorkouts(),
               title: CusAL.of(context).workout,
@@ -63,6 +66,7 @@ class _TrainingState extends State<Training> {
             ),
           ),
           Expanded(
+            // 周期计划
             child: CusCoverCard(
               targetPage: const TrainingPlans(),
               title: CusAL.of(context).plan,

@@ -4,9 +4,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../common/utils/tools.dart';
 import '../models/cus_app_localizations.dart';
-import '../views/diary/index_table_calendar.dart';
-import '../views/dietary/index.dart';
-import '../views/me/index.dart';
 import '../views/training/index.dart';
 
 /// 主页面
@@ -19,15 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    Training(),
-    Dietary(),
-    DiaryTableCalendar(),
-    UserAndSettings()
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -70,12 +58,6 @@ class _HomePageState extends State<HomePage> {
         }
       });
     }
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 
   @override
@@ -123,40 +105,11 @@ class _HomePageState extends State<HomePage> {
         }
       },
       child: Scaffold(
-        // home页的背景色(如果下层还有设定其他主题颜色，会被覆盖)
-        // backgroundColor: Colors.red,
-        body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
-        bottomNavigationBar: BottomNavigationBar(
-          // 当item数量小于等于3时会默认fixed模式下使用主题色，大于3时则会默认shifting模式下使用白色。
-          // 为了使用主题色，这里手动设置为fixed
-          type: BottomNavigationBarType.fixed,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: const Icon(Icons.fitness_center),
-              label: CusAL.of(context).training,
-            ),
-            BottomNavigationBarItem(
-              icon: const Icon(Icons.restaurant),
-              label: CusAL.of(context).dietary,
-            ),
-            BottomNavigationBarItem(
-              icon: const Icon(Icons.note),
-              label: CusAL.of(context).diary,
-            ),
-            BottomNavigationBarItem(
-              icon: const Icon(Icons.person),
-              label: CusAL.of(context).me,
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          // 底部导航栏的颜色
-          // backgroundColor: dartThemeMaterialColor3,
-          // backgroundColor: Theme.of(context).primaryColor,
-          // // 被选中的item的图标颜色和文本颜色
-          // selectedIconTheme: const IconThemeData(color: Colors.white),
-          // selectedItemColor: Colors.white,
-          onTap: _onItemTapped,
+        appBar: AppBar(
+          title: Text(CusAL.of(context).training),
+          centerTitle: true,
         ),
+        body: const Training(),
       ),
     );
   }

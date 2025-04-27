@@ -39,9 +39,12 @@ class DBUserHelper {
     // Directory directory = await getApplicationDocumentsDirectory();
     // String path = "${directory.path}/${UserDdl.databaseName}";
 
-    // IOS不支持这个方法，所以可能取不到这个地址
+    // bug: IOS不支持这个方法，所以可能取不到这个地址?所以呢？怎么处理的
     Directory? directory2 = await getExternalStorageDirectory();
-    String path = "${directory2?.path}/${UserDdl.databaseName}";
+    if (directory2 == null) {
+      throw Exception('无法获取外部存储目录');
+    }
+    String path = "${directory2.path}/${UserDdl.databaseName}";
 
     print("初始化 User sqlite数据库存放的地址：$path");
 

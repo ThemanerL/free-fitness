@@ -39,9 +39,17 @@ app.*.symbols
 app.*.map.json
 
 # Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+android/app/debug
+android/app/profile
+android/app/release
+# 忽略所有原生构建的临时文件
+android/app/.cxx/
+# 忽略 Android 构建相关文件
+android/build/
+android/build/reports/
+android/.kotlin/
+android/.gradle/
+android/app/build/
 
 # 暂时不关注其他的构建
 ios

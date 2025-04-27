@@ -3,6 +3,7 @@
 /// 但有一些栏位是内部需要的和设定的，可为空
 /// 因为db设定id为int，这里的id导入时会被替换成code，所以这里就不需要code了
 class CustomExercise {
+  // todo 随机生成
   String? id;
   String? name;
   String? force;
