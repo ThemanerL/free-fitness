@@ -68,13 +68,13 @@ dependencies:
   # 控制屏幕保持亮屏
   wakelock_plus: ^1.2.8
   # 数字选择器
-  numberpicker: ^2.1.2
+  # numberpicker: ^2.1.2
   # 获取设备信息
   device_info_plus: ^10.1.2
   # 创建和预览pdf
-  pdf: ^3.11.1
+  # pdf: ^3.11.1
   # 允许 Flutter 应用程序生成文档并将其打印到 android 或 ios 兼容打印机
-  printing: ^5.13.4
+  # printing: ^5.13.4
   # 简单的键值对存储
   get_storage: ^2.1.1
   # 从相册选择图片或者拍照片
@@ -82,7 +82,7 @@ dependencies:
   # 一个全面的、跨平台的 Dart 路径操作库
   path: ^1.9.0
   # 压缩文件
-  archive: ^3.6.1
+  # archive: ^3.6.1
   # 一个颜色主题插件
   flex_color_scheme: ^8.0.0
   # 可以按照手势缩放图片进行预览
@@ -90,7 +90,7 @@ dependencies:
   # http client
   dio: ^5.7.0
   # 美化dio请求的日志
-  pretty_dio_logger: ^1.4.0
+  # pretty_dio_logger: ^1.4.0
   # 提示框
   flutter_easyloading: ^3.0.5
   toastification: ^2.3.0
